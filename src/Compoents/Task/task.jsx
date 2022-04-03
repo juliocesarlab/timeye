@@ -19,7 +19,7 @@ export function Task({ task }) {
         <span className="play-btn" onClick={handlePlayStatus}>
           {playStatus ? <BsPauseFill /> : <BsFillPlayFill />}
         </span>
-        <Timer userId={user.id} taskId={task._id}/>
+        <Timer userId={user.id} taskId={task._id} timeSpent={task.timeSpent} />
       </div>
     </TaskBox>
   );
