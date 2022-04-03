@@ -1,27 +1,19 @@
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import TimeyeText from '../../assets/Timeye-only-text.png'
 import { useAuth } from '../../Hooks/useAuth'
-import { UserForm } from './style.js'
+import { UserForm } from '../LoginPage/style'
 
-export function Login() {
+export function RegisterPage() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const { mainLogin } =  useAuth()
+  const { mainRegister} =  useAuth()
 
-  async function handleLogin() {
-
-    try {
-      const response = await mainLogin(email, password)
-      console.log(response)
-    } catch (e) {
-      //use toastify
-      console.log(e)
-    }
-
+  async function handleRegister() {
+      const response = await mainRegister(email, password)
   }
-
 
   return (
       <UserForm>
@@ -49,16 +41,15 @@ export function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 />
             </div>
-            <button onClick={handleLogin}>Entrar</button>
+            <button onClick={handleRegister}>Register</button>
           </div>
 
 
           <div className="card-footer">
-            <a href="#" className="link">Not have an account ? Get Started</a>
+            <NavLink to="/login" className="link">Already have an account ?</NavLink>
           </div>
             
         </div>
         </UserForm>
   )
 }
-

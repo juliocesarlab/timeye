@@ -13,7 +13,14 @@ export function Navbar( { options }) {
           </div>
 
           <div className="options">
-            { options.map(option => <NavLink to={option.goTo} key={option.name}>{option.name}</NavLink>) }
+            { options.map(option => 
+              <NavLink 
+                to={option.goTo} 
+                key={option.name}
+                onClick={option.onclick ? option.onclick : false}
+                >
+                {option.name}
+               </NavLink>) }
           </div>
       </div>
     </StyledNav>

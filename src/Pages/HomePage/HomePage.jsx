@@ -24,7 +24,7 @@ export function HomePage() {
                 <Writer phrasesArr={["time.", "money."]}/>
               </span>
             </h1>
-            <NavLink to={'/login'}>
+            <NavLink to={'/register'}>
               <button>Improve my time</button>
             </NavLink>
           </div>

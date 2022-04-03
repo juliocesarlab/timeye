@@ -9,5 +9,13 @@ export async function createSession(email, password) {
       email,
       password
     })
-    return response.data
+    return response
+}
+
+export async function createUser(email, password) {
+  const response = await api.post('/users', {
+    email,
+    password
+  })
+  return response
 }
