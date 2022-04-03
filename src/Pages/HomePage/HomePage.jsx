@@ -4,11 +4,13 @@ import logoImage from "../../assets/Timeye-only-logo.png";
 import textLogo from "../../assets/Timeye-only-text.png";
 import { Navbar } from "../../Compoents/Navbar/Navbar";
 import { Writer } from "../../Compoents/Writer/Writer";
+import { useAuth } from '../../Hooks/useAuth';
 import { HomeView } from './styles.js';
 
-
-
 export function HomePage() {
+
+  const data = useAuth()
+  console.log(data)
 
   return (
     <>
