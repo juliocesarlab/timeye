@@ -30,3 +30,14 @@ export async function getTasks(userId) {
     return e;
   }
 }
+
+export async function saveDate(userId, taskId, date) {
+  try {
+    const response = await api.put(`users/${userId}/tasks/${taskId}`, {
+      timeSpent: date,
+    });
+    return response;
+  } catch (e) {
+    return e;
+  }
+}
