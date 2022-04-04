@@ -10,7 +10,7 @@ export function DashboardPage() {
   const { logout, user } = useAuth();
   const [tasks, setTasks] = useState([]);
   const [newTaskName, setNewTaskName] = useState('');
-  const [newTaskSample, setNewTaskSample] = useState();
+  const [newTaskSample, setNewTaskSample] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -19,12 +19,13 @@ export function DashboardPage() {
       const tasks = response?.data?.tasks;
 
       if (tasks) setTasks(response.data.tasks);
+      console.log(tasks);
       setIsLoading(false);
     })();
   }, []);
 
   async function handleAddTask() {
-    const response = await createTask(user.id, newTaskName);
+    const response = await createTask(user.id, newTaskName, newTaskSample);
     const task = response.data.createdTask;
 
     setTasks([...tasks, task]);
@@ -32,7 +33,12 @@ export function DashboardPage() {
 
   return (
     <>
-      <Navbar options={[{ name: 'Logout', goTo: '/', onclick: logout }]} />
+      <Navbar
+        options={[
+          { name: 'Logout', goTo: '/', onclick: logout },
+          { name: 'MyStats', goTo: '/stats' },
+        ]}
+      />
       <div className="default-container">
         <CreateArea>
           <div className="title">
@@ -60,6 +66,12 @@ export function DashboardPage() {
         <DashboardView>
           <div className="dashboard-heading">
             <h1>My Tasks</h1>
+            <div className="tasks-header">
+              <h3>Name</h3>
+              <h3>Sample</h3>
+              <h3>Timer</h3>
+              <h3>Options</h3>
+            </div>
           </div>
           {isLoading && (
             <>

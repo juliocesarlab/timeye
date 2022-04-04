@@ -7,6 +7,13 @@ export const DashboardView = styled.main`
 
   .dashboard-heading {
     margin-bottom: 2rem;
+
+    .tasks-header {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+      margin-top: 2rem;
+    }
   }
 `;
 

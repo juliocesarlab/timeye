@@ -29,18 +29,18 @@ export function Timer({ userId, taskId, timeSpent }) {
   }
 
   return (
-    <>
+    <div className="clock">
       <span className="play-btn" onClick={handlePlayStatus}>
         {playStatus ? <BsPauseFill /> : <BsFillPlayFill />}
       </span>
       <span onClick={reset}>
         <BiRefresh />
       </span>
-      <div className="clock">
+      <div className="timer">
         <span>{hours < 10 ? `0${hours}` : hours}</span>:
         <span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
         <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
       </div>
-    </>
+    </div>
   );
 }

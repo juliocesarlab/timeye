@@ -42,10 +42,11 @@ export async function saveDate(userId, taskId, date) {
   }
 }
 
-export async function createTask(userId, taskName) {
+export async function createTask(userId, taskName, taskSample) {
   try {
     const response = await api.post(`users/${userId}/tasks`, {
       name: taskName,
+      sample: taskSample,
     });
     return response;
   } catch (e) {
@@ -57,6 +58,17 @@ export async function updateTaskName(taskName, userId, taskId) {
   try {
     const response = await api.put(`users/${userId}/tasks/${taskId}`, {
       name: taskName,
+    });
+    return response;
+  } catch (e) {
+    return e;
+  }
+}
+
+export async function updateTaskSample(taskSample, userId, taskId) {
+  try {
+    const response = await api.put(`users/${userId}/tasks/${taskId}`, {
+      sample: taskSample,
     });
     return response;
   } catch (e) {

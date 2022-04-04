@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const TaskBox = styled.div`
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
 
   color: var(--cian);
@@ -11,7 +11,7 @@ export const TaskBox = styled.div`
 
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 0 2rem;
 
   @keyframes removeToRight {
     100% {
@@ -27,17 +27,18 @@ export const TaskBox = styled.div`
     margin-top: 1rem;
   }
 
-  .main-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  
 
     input {
       border: 0;
       text-align: center;
       font-size: 1.2rem;
-      width: 15ch;
+      width: 12ch;
       cursor: text;
+    }
+
+    input.sample-input {
+      max-width: 2rem;
     }
 
     span {
@@ -53,15 +54,25 @@ export const TaskBox = styled.div`
       }
     }
 
-    .clock span {
-      font-size: 1.2rem;
-      cursor: unset;
-      top: -1px;
+    .clock {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+      left: -2.5rem;
     }
+
+    .timer span {
+      font-size: 1.2rem;
+    }
+   
   }
 
   .options {
     transition: all 0.3s;
+    position: relative;
+    left: -4.5rem;
 
     .delete-btn {
       color: var(--danger-red);
@@ -73,5 +84,4 @@ export const TaskBox = styled.div`
     &:hover {
       transform: translateY(-3px);
     }
-  }
 `;
