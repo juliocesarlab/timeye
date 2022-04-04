@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AiFillPlusCircle } from 'react-icons/ai';
-import { Navbar } from '../../Compoents/Navbar/Navbar';
-import { Task } from '../../Compoents/Task/task';
+import { Navbar } from '../../Components/Navbar/Navbar';
+import { Task } from '../../Components/Task/task';
 import { useAuth } from '../../Hooks/useAuth';
 import { createTask, getTasks } from '../../services/api';
 import { CreateArea, DashboardView } from './style';

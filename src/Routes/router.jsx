@@ -4,6 +4,7 @@ import { DashboardPage } from '../Pages/DashboardPage/Dashboard';
 import { HomePage } from '../Pages/HomePage/HomePage';
 import { LoginPage } from '../Pages/LoginPage/Login';
 import { RegisterPage } from '../Pages/RegisterPage/Register';
+import { StatsPage } from '../Pages/StatsPage/Stats';
 
 function PrivateRoute({ children }) {
   const { user } = useAuth();
@@ -27,6 +28,14 @@ export function AppRouter() {
         element={
           <PrivateRoute>
             <DashboardPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/stats"
+        element={
+          <PrivateRoute>
+            <StatsPage />
           </PrivateRoute>
         }
       />

@@ -2,8 +2,8 @@
 import { NavLink } from "react-router-dom";
 import logoImage from "../../assets/Timeye-only-logo.png";
 import textLogo from "../../assets/Timeye-only-text.png";
-import { Navbar } from "../../Compoents/Navbar/Navbar";
-import { Writer } from "../../Compoents/Writer/Writer";
+import { Navbar } from "../../Components/Navbar/Navbar";
+import { Writer } from "../../Components/Writer/Writer";
 import { useAuth } from '../../Hooks/useAuth';
 import { HomeView } from './styles.js';
 
