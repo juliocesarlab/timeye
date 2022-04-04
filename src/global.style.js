@@ -1,5 +1,4 @@
-import { createGlobalStyle } from "styled-components";
-
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
@@ -18,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
   }
 
   .default-container {
@@ -39,4 +39,4 @@ export const GlobalStyle = createGlobalStyle`
     transform: translateY(-3px);
 
   }
-`
+`;
