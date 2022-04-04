@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 export const TaskBox = styled.div`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
+
+  color: var(--cian);
 
   height: 60px;
 

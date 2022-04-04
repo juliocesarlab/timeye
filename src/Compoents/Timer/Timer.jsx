@@ -1,5 +1,9 @@
+import { useState } from 'react';
+import { BiRefresh } from 'react-icons/bi';
+import { BsFillPlayFill, BsPauseFill } from 'react-icons/bs';
 import { useStopwatch } from 'react-timer-hook';
 import { saveDate } from '../../services/api';
+
 export function Timer({ userId, taskId, timeSpent }) {
   const dateFrom = new Date(timeSpent);
   console.log(dateFrom.getUTCSeconds());
@@ -7,6 +11,12 @@ export function Timer({ userId, taskId, timeSpent }) {
   stopwatchOffset.setSeconds(
     stopwatchOffset.getSeconds() + dateFrom.getSeconds()
   );
+
+  const [playStatus, setPlayStatus] = useState(false);
+  function handlePlayStatus() {
+    setPlayStatus(!playStatus);
+    !playStatus ? start() : pauseAndSave();
+  }
 
   const { seconds, minutes, hours, isRunning, start, pause, reset } =
     useStopwatch({ offsetTimestamp: stopwatchOffset });
@@ -20,10 +30,15 @@ export function Timer({ userId, taskId, timeSpent }) {
 
   return (
     <>
-      <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
-      <button onClick={start}>Start</button>
-      <button onClick={pauseAndSave}>Pause</button>
-      <button onClick={reset}>Reset</button>
+      <span className="play-btn" onClick={handlePlayStatus}>
+        {playStatus ? <BsPauseFill /> : <BsFillPlayFill />}
+      </span>
+      <span onClick={reset}>
+        <BiRefresh />
+      </span>
+      <span>{hours < 10 ? `0${hours}` : hours}</span>:
+      <span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
+      <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
     </>
   );
 }
