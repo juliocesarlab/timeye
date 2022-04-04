@@ -8,6 +8,7 @@ import { CreateArea, DashboardView } from './style';
 
 export function DashboardPage() {
   const { logout, user } = useAuth();
+
   const [tasks, setTasks] = useState([]);
   const [newTaskName, setNewTaskName] = useState('');
   const [newTaskSample, setNewTaskSample] = useState('');
@@ -19,7 +20,6 @@ export function DashboardPage() {
       const tasks = response?.data?.tasks;
 
       if (tasks) setTasks(response.data.tasks);
-      console.log(tasks);
       setIsLoading(false);
     })();
   }, []);
@@ -35,8 +35,8 @@ export function DashboardPage() {
     <>
       <Navbar
         options={[
-          { name: 'Logout', goTo: '/', onclick: logout },
           { name: 'MyStats', goTo: '/stats' },
+          { name: 'Logout', goTo: '/', onclick: logout },
         ]}
       />
       <div className="default-container">

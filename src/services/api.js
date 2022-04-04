@@ -84,3 +84,8 @@ export async function deleteTask(userId, taskId) {
     return e;
   }
 }
+
+export async function getStatistics(userId, today) {
+  const dayTasks = await api.get(`users/${userId}/tasks/today`, { today });
+  return dayTasks
+}

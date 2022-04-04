@@ -1,9 +1,21 @@
+import { useEffect } from 'react';
 import { Navbar } from '../../Components/Navbar/Navbar';
 import { useAuth } from '../../Hooks/useAuth';
+import { getStatistics } from '../../services/api';
 import { StatsView } from './style';
 
 export function StatsPage() {
   const { user } = useAuth();
+
+  useEffect(() => {
+    async function getStats() {
+      const today = new Date();
+      const response = await getStatistics(user.id, today);
+      console.log(response);
+    }
+
+    getStats();
+  }, []);
 
   return (
     <>
