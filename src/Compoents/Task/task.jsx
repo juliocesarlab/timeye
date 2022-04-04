@@ -5,7 +5,7 @@ import { deleteTask, updateTaskName } from '../../services/api';
 import { Timer } from '../Timer/Timer';
 import { TaskBox } from './style';
 
-export function Task({ task }) {
+export function Task({ task, taskList, setTaskList }) {
   const { user } = useAuth();
   const [taskName, setTaskName] = useState(task.name);
   const [deleteAnimate, setDeleteAnimate] = useState(false);
@@ -18,10 +18,14 @@ export function Task({ task }) {
   async function handleDeleteTask() {
     const response = await deleteTask(user.id, task._id);
     setDeleteAnimate(true);
+    setTimeout(() => removeTaskFromDom(task._id), 300);
   }
 
   function removeTaskFromDom(taskId) {
-    const filteredTasks = tasks.filter()
+    taskList.forEach(task => console.log(task._id == taskId));
+    const filteredTasks = taskList.filter(task => task._id != taskId);
+    console.log(filteredTasks);
+    setTaskList(filteredTasks);
   }
 
   return (

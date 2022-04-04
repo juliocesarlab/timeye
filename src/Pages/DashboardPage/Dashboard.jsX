@@ -9,13 +9,17 @@ import { CreateArea, DashboardView } from './style';
 export function DashboardPage() {
   const { logout, user } = useAuth();
   const [tasks, setTasks] = useState([]);
-  const [newTask, setNewTask] = useState('');
   const [newTaskName, setNewTaskName] = useState('');
+  const [newTaskSample, setNewTaskSample] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async function () {
       const response = await getTasks(user.id);
-      setTasks(response.data.tasks);
+      const tasks = response?.data?.tasks;
+
+      if (tasks) setTasks(response.data.tasks);
+      setIsLoading(false);
     })();
   }, []);
 
@@ -39,6 +43,14 @@ export function DashboardPage() {
               type="text"
               value={newTaskName}
               onChange={e => setNewTaskName(e.target.value)}
+              placeholder="Task name"
+            />
+            <input
+              type="number"
+              className="sample-input"
+              value={newTaskSample}
+              onChange={e => setNewTaskSample(e.target.value)}
+              placeholder="Sample(optional)"
             />
             <span className="add-task" onClick={handleAddTask}>
               <AiFillPlusCircle />
@@ -49,11 +61,27 @@ export function DashboardPage() {
           <div className="dashboard-heading">
             <h1>My Tasks</h1>
           </div>
-          <div className="dashboard-body">
-            {tasks.map(task => (
-              <Task task={task} key={task._id} />
-            ))}
-          </div>
+          {isLoading && (
+            <>
+              <h3>Loading your tasks...</h3>
+            </>
+          )}
+
+          {!isLoading && (
+            <>
+              <div className="dashboard-body">
+                {tasks.map(task => (
+                  <Task
+                    task={task}
+                    id={task._id}
+                    key={task._id}
+                    taskList={tasks}
+                    setTaskList={setTasks}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </DashboardView>
       </div>
     </>
