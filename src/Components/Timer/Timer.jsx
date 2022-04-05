@@ -5,12 +5,17 @@ import { useStopwatch } from 'react-timer-hook';
 import { saveDate } from '../../services/api';
 
 export function Timer({ userId, taskId, timeSpent }) {
+  console.log(timeSpent);
   const dateFrom = new Date(timeSpent);
-  console.log(dateFrom.getUTCSeconds());
+
+  const hoursToSec = dateFrom.getUTCHours() * 60 * 60;
+  const minutesToSec = dateFrom.getUTCMinutes() * 60;
+  const defaultSeconds = dateFrom.getUTCSeconds();
+
+  const timerSecondsOffset = hoursToSec + minutesToSec + defaultSeconds;
+
   const stopwatchOffset = new Date();
-  stopwatchOffset.setSeconds(
-    stopwatchOffset.getSeconds() + dateFrom.getSeconds()
-  );
+  stopwatchOffset.setSeconds(stopwatchOffset.getSeconds() + timerSecondsOffset);
 
   const [playStatus, setPlayStatus] = useState(false);
   function handlePlayStatus() {
@@ -24,7 +29,7 @@ export function Timer({ userId, taskId, timeSpent }) {
   async function pauseAndSave() {
     pause();
     const timeUsed = new Date();
-    timeUsed.setHours(hours - 3, minutes, seconds);
+    timeUsed.setHours((hours - 3), minutes, seconds, 0); //last is ms
     const response = await saveDate(userId, taskId, timeUsed);
   }
 

@@ -11,8 +11,8 @@ import { TaskBox } from './style';
 
 export function Task({ task, taskList, setTaskList }) {
   const { user } = useAuth();
-  const [taskName, setTaskName] = useState(task.name);
-  const [taskSample, setTaskSample] = useState(task.sample);
+  const [taskName, setTaskName] = useState(task.name || '');
+  const [taskSample, setTaskSample] = useState(task.sample || '');
   const [deleteAnimate, setDeleteAnimate] = useState(false);
 
   async function handleTaskName() {
@@ -36,9 +36,7 @@ export function Task({ task, taskList, setTaskList }) {
   }
 
   function removeTaskFromDom(taskId) {
-    taskList.forEach(task => console.log(task._id == taskId));
     const filteredTasks = taskList.filter(task => task._id != taskId);
-    console.log(filteredTasks);
     setTaskList(filteredTasks);
   }
 

@@ -19,6 +19,16 @@ export const TaskBox = styled.div`
     }
   }
 
+  @keyframes blink {
+    0%{
+      opacity: 0
+    }
+  
+    100% {
+      opacity: 0.5;
+    }
+  }
+
   &.delete-animate {
     animation: removeToRight 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
   }
@@ -27,7 +37,6 @@ export const TaskBox = styled.div`
     margin-top: 1rem;
   }
 
-  
 
     input {
       border: 0;
