@@ -85,7 +85,11 @@ export async function deleteTask(userId, taskId) {
   }
 }
 
-export async function getStatistics(userId, today) {
-  const dayTasks = await api.get(`users/${userId}/tasks/today`, { today });
-  return dayTasks
+export async function getStatistics(userId) {
+  try {
+    const dayTasks = await api.get(`users/${userId}/tasks/today`);
+    return dayTasks;
+  } catch (e) {
+    return e;
+  }
 }

@@ -1,19 +1,10 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useAuth } from '../Hooks/useAuth';
 import { DashboardPage } from '../Pages/DashboardPage/Dashboard';
 import { HomePage } from '../Pages/HomePage/HomePage';
 import { LoginPage } from '../Pages/LoginPage/Login';
 import { RegisterPage } from '../Pages/RegisterPage/Register';
 import { StatsPage } from '../Pages/StatsPage/Stats';
-
-function PrivateRoute({ children }) {
-  const { user } = useAuth();
-
-  if (!user) {
-    return <Navigate to="/login" />;
-  }
-  return children;
-}
 
 export function AppRouter() {
   const { user } = useAuth();
@@ -23,22 +14,8 @@ export function AppRouter() {
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={user ? <DashboardPage /> : <LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route
-        path="/dashboard"
-        element={
-          <PrivateRoute>
-            <DashboardPage />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/stats"
-        element={
-          <PrivateRoute>
-            <StatsPage />
-          </PrivateRoute>
-        }
-      />
+      <Route path="/dashboard" element={user ?<DashboardPage /> : <LoginPage />} />
+      <Route path="/stats" element={user ? <StatsPage /> : <LoginPage />} />
     </Routes>
   );
 }

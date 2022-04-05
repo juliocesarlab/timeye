@@ -26,7 +26,11 @@ export function Task({ task, taskList, setTaskList }) {
   }
 
   async function handleDeleteTask() {
-    const response = await deleteTask(user.id, task._id);
+    try {
+      const response = await deleteTask(user.id, task._id);
+    } catch (e) {
+      console.log(e);
+    }
     setDeleteAnimate(true);
     setTimeout(() => removeTaskFromDom(task._id), 300);
   }
@@ -43,7 +47,6 @@ export function Task({ task, taskList, setTaskList }) {
       <input
         type="text"
         id={task._id}
-        key={task._id}
         value={taskName}
         onChange={e => setTaskName(e.target.value)}
         onBlur={handleTaskName}
@@ -51,7 +54,6 @@ export function Task({ task, taskList, setTaskList }) {
       <input
         type="text"
         className="sample-input"
-        key={task._id}
         value={taskSample}
         onChange={e => setTaskSample(e.target.value)}
         onBlur={handleTaskSample}

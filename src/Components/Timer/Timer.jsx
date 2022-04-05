@@ -24,7 +24,7 @@ export function Timer({ userId, taskId, timeSpent }) {
   async function pauseAndSave() {
     pause();
     const timeUsed = new Date();
-    timeUsed.setHours(hours, minutes, seconds);
+    timeUsed.setHours(hours - 3, minutes, seconds);
     const response = await saveDate(userId, taskId, timeUsed);
   }
 
