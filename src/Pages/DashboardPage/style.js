@@ -15,6 +15,20 @@ export const DashboardView = styled.main`
       margin-top: 2rem;
     }
   }
+
+  .no-tasks {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+
+    img {
+      max-width: 150px;
+      align-self: center;
+    }
+  }
 `;
 
 export const CreateArea = styled.div`

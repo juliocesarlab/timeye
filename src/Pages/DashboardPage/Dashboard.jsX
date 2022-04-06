@@ -78,7 +78,9 @@ export function DashboardPage() {
               </div>
             </>
           ) : (
-            <h3>Nothing here...</h3>
+            <div className="no-tasks">
+              <h3>No tasks here, you should create a new one !</h3>
+            </div>
           )}
           {isLoading && (
             <>
