@@ -15,8 +15,25 @@ export const TaskBox = styled.div`
 
   @keyframes removeToRight {
     100% {
-      transform: translateX(9999px);
+      transform: translateX(1920px);
+      opacity: 0;
     }
+  }
+
+  &.show-animate {
+    @keyframes toRight {
+      0% {
+        opacity: 0;
+        transform: translateX(-1920px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0px);
+      }
+    }
+
+    animation: toRight 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
   }
 
   @keyframes blink {

@@ -9,7 +9,7 @@ import {
 import { Timer } from '../Timer/Timer';
 import { TaskBox } from './style';
 
-export function Task({ task, taskList, setTaskList }) {
+export function Task({ task, taskList, setTaskList, animate }) {
   const { user } = useAuth();
   const [taskName, setTaskName] = useState(task.name || '');
   const [taskSample, setTaskSample] = useState(task.sample || '');
@@ -41,7 +41,11 @@ export function Task({ task, taskList, setTaskList }) {
   }
 
   return (
-    <TaskBox className={deleteAnimate ? 'delete-animate' : ''}>
+    <TaskBox
+      className={
+        deleteAnimate ? 'delete-animate' : animate ? 'show-animate' : ''
+      }
+    >
       <input
         type="text"
         id={task._id}

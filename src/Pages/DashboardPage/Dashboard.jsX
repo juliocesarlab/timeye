@@ -13,6 +13,7 @@ export function DashboardPage() {
   const [newTaskName, setNewTaskName] = useState('');
   const [newTaskSample, setNewTaskSample] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [animateTask, setAnimateTask] = useState(false);
 
   useEffect(() => {
     (async function () {
@@ -27,7 +28,7 @@ export function DashboardPage() {
   async function handleAddTask() {
     const response = await createTask(user.id, newTaskName, newTaskSample);
     const task = response.data.createdTask;
-
+    setAnimateTask(true);
     setTasks([...tasks, task]);
   }
 
@@ -64,15 +65,21 @@ export function DashboardPage() {
           </div>
         </CreateArea>
         <DashboardView>
-          <div className="dashboard-heading">
-            <h1>My Tasks</h1>
-            <div className="tasks-header">
-              <h3>Name</h3>
-              <h3>Sample</h3>
-              <h3>Timer</h3>
-              <h3>Options</h3>
-            </div>
-          </div>
+          {tasks.length > 0 ? (
+            <>
+              <div className="dashboard-heading">
+                <h1>My Tasks</h1>
+                <div className="tasks-header">
+                  <h3>Name</h3>
+                  <h3>Sample</h3>
+                  <h3>Timer</h3>
+                  <h3>Options</h3>
+                </div>
+              </div>
+            </>
+          ) : (
+            <h3>Nothing here...</h3>
+          )}
           {isLoading && (
             <>
               <h3>Loading your tasks...</h3>
@@ -81,9 +88,10 @@ export function DashboardPage() {
 
           {!isLoading && (
             <>
-              <div className="dashboard-body">
+              <div>
                 {tasks.map(task => (
                   <Task
+                    animate={animateTask ? 'animate-task' : ''}
                     task={task}
                     id={task._id}
                     key={task._id}
