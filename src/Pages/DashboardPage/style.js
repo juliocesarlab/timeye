@@ -15,20 +15,6 @@ export const DashboardView = styled.main`
       margin-top: 2rem;
     }
   }
-
-  .no-tasks {
-    display: flex;
-    gap: 2rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: 50%;
-
-    img {
-      max-width: 150px;
-      align-self: center;
-    }
-  }
 `;
 
 export const CreateArea = styled.div`
@@ -54,7 +40,7 @@ export const CreateArea = styled.div`
       height: 100%;
       max-width: 280px;
 
-      font-size: 1.2rem;
+      font-size: 1rem;
 
       padding: 0.5rem;
 
