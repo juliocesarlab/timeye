@@ -82,7 +82,7 @@ export function DashboardPage() {
               <h3>No tasks here, you should create a new one !</h3>
             </div>
           )}
-          {isLoading && (
+          {isLoading && tasks.length > 0 && (
             <>
               <h3>Loading your tasks...</h3>
             </>
