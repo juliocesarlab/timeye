@@ -54,6 +54,8 @@ export function Task({ task, taskList, setTaskList, animate }) {
         onChange={e => setTaskName(e.target.value)}
         onBlur={handleTaskName}
       />
+      </div>
+      <div className="editable">
       <input
         type="text"
         className="sample-input"
