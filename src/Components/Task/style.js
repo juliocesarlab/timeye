@@ -21,7 +21,10 @@ export const TaskBox = styled.div`
 
     .editable {
       flex: 1;
-      margin-right: 16px;
+       
+      & + & {
+        margin-right: 16px;
+       }
     }
 
     .clock {
