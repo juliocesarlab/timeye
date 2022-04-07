@@ -11,9 +11,7 @@ export const HomeView = styled.main`
   margin: 0 auto;
 
   @media (max-width: 786px) {
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
+    flex-wrap: wrap;
 
     img {
       max-width: 230px;
