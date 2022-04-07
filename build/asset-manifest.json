@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/static/js/main.d35a2a0f.js",
+    "static/media/Timeye-only-logo.png": "/static/media/Timeye-only-logo.f477228af6675cdd8e58.png",
+    "index.html": "/index.html",
+    "main.d35a2a0f.js.map": "/static/js/main.d35a2a0f.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.d35a2a0f.js"
+  ]
+}
