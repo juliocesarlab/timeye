@@ -39,4 +39,10 @@ export const GlobalStyle = createGlobalStyle`
     transform: translateY(-3px);
 
   }
+
+   @media (max-width: 786px) {
+    :root {
+      font-size: 0.85rem;
+    }
+  }
 `;

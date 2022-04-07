@@ -46,6 +46,7 @@ export function Task({ task, taskList, setTaskList, animate }) {
         deleteAnimate ? 'delete-animate' : animate ? 'show-animate' : ''
       }
     >
+      <div className="editable">
       <input
         type="text"
         id={task._id}
@@ -60,6 +61,7 @@ export function Task({ task, taskList, setTaskList, animate }) {
         onChange={e => setTaskSample(e.target.value)}
         onBlur={handleTaskSample}
       />
+      </div>
       <Timer userId={user.id} taskId={task._id} timeSpent={task.timeSpent} />
 
       <div className="options">

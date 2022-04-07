@@ -13,6 +13,28 @@ export const TaskBox = styled.div`
   border-radius: 1rem;
   padding: 0 2rem;
 
+  @media (max-width: 576px) {
+    flex-wrap: wrap;
+    height: 6rem;
+
+    justify-content: center;
+
+    .editable {
+      flex: 1;
+      margin-right: 16px;
+    }
+
+    .clock {
+      gap: 0 !important;
+      display: flex;
+      align-items: center;
+    }
+
+    .options {
+      left: 0px !important
+    }
+  }
+
   @keyframes removeToRight {
     100% {
       transform: translateX(1920px);

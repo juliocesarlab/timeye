@@ -5,6 +5,12 @@ export const DashboardView = styled.main`
   max-width: 900px;
   margin: 0 auto;
 
+  @media (max-width: 786px) {
+    .dashboard-heading {
+      display: none;
+    }
+  }
+
   .dashboard-heading {
     margin-bottom: 2rem;
 

@@ -4,7 +4,6 @@ import { useStopwatch } from 'react-timer-hook';
 import { saveDate } from '../../services/api';
 
 export function Timer({ userId, taskId, timeSpent }) {
-  console.log(timeSpent);
   const dateFrom = new Date(timeSpent);
 
   const hoursToSec = dateFrom.getUTCHours() * 60 * 60;
@@ -28,9 +27,7 @@ export function Timer({ userId, taskId, timeSpent }) {
   });
 
   useEffect(() => {
-    isRunning && new Date().getHours() >= 18
-      ? pauseAndSave('forcePause')
-      : '';
+    isRunning && new Date().getHours() >= 18 ? pauseAndSave('forcePause') : '';
   }, [hours]);
 
   async function pauseAndSave(forcePause) {

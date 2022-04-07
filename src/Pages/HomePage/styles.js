@@ -1,14 +1,31 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const HomeView = styled.main`
   min-height: calc(100vh - 150px);
-  
+
   display: flex;
   align-items: center;
 
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+
+  @media (max-width: 786px) {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+
+    img {
+      max-width: 230px;
+      justify-self: center;
+    }
+
+    .floating-logo {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
 
   .apresentation {
     flex: 1;
@@ -49,8 +66,6 @@ export const HomeView = styled.main`
         color: #fff;
       }
     }
-
-   
   }
 
   .floating-logo {
@@ -67,4 +82,4 @@ export const HomeView = styled.main`
     }
     animation: floatMove 5s infinite;
   }
-`
+`;
