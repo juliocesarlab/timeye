@@ -5,7 +5,6 @@ import { saveDate } from '../../services/api';
 
 export function Timer({ userId, taskId, timeSpent }) {
   const dateFrom = new Date(timeSpent);
-
   const hoursToSec = dateFrom.getUTCHours() * 60 * 60;
   const minutesToSec = dateFrom.getUTCMinutes() * 60;
   const defaultSeconds = dateFrom.getUTCSeconds();
@@ -25,6 +24,8 @@ export function Timer({ userId, taskId, timeSpent }) {
   const { seconds, minutes, hours, isRunning, start, pause } = useStopwatch({
     offsetTimestamp: stopwatchOffset,
   });
+
+  //Verify if hour is greather than 18:pm when hours variable changes
 
   useEffect(() => {
     isRunning && new Date().getHours() >= 18 ? pauseAndSave('forcePause') : '';

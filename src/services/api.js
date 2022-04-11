@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://timeye-api.herokuapp.com', //developement: http://localhost:5000
+  baseURL: 'https://timeye-api.herokuapp.com', //development: http://localhost:5000
 });
 
 export async function createSession(email, password) {

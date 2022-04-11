@@ -34,11 +34,19 @@ export function AuthContextProvider({ children }) {
   }
 
   async function mainRegister(email, password) {
-    const response = await createUser(email, password);
-    localStorage.setItem('user', JSON.stringify(response.data.createdUser));
+    try {
+      const response = await createUser(email, password);
 
-    setUser(response.data.createdUser);
-    navigate('/login');
+      if (response.data.status === 'success') {
+        try {
+          const loginResponse = await mainLogin(email, password);
+        } catch (e) {
+          return e;
+        }
+      }
+    } catch (e) {
+      return e;
+    }
   }
 
   async function logout() {

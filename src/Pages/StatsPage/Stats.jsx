@@ -25,8 +25,6 @@ export function StatsPage() {
 
   return (
     <>
-      {console.log(stats)}
-
       <Navbar options={[{ name: 'Dashboard', goTo: '/dashboard' }]} />
       <>
         {stats ? (
